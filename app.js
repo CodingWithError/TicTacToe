@@ -2,6 +2,7 @@ let boxes = document.querySelectorAll('.box');
 let resetBtn = document.querySelector('#reset-btn');
 let msgContainer = document.querySelector(".msg-container");
 let msg = document.querySelector("#msg");
+let main = document.querySelector(".main");
 
 let turnO = true; // playerX, playerO
 
@@ -22,6 +23,8 @@ const resetGame = () => {
   count = 0;
   enableBoxes();
   msgContainer.classList.add("hide");
+  main.classList.remove("hide");
+  document.getElementById("reset-btn").classList.remove("hide");
 };
 
 // this function says whether you have clicked the button.
@@ -57,6 +60,8 @@ const showWinner = (winner) => {
   msg.innerText = `Congratulations, Winner is ${winner}`;
   msgContainer.classList.remove("hide");
   disableBoxes();
+  main.classList.add("hide");
+  document.getElementById("reset-btn").classList.add("hide");
 };
 
 const checkWinner = () => {
@@ -78,3 +83,4 @@ document.getElementById("new-btn").addEventListener("click", resetGame);
 
 // Corrected event listener for the Reset button
 resetBtn.addEventListener("click", resetGame);
+
